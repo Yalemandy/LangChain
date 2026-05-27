@@ -2,6 +2,7 @@ import os
 
 from langchain_core.messages import content, AIMessage, HumanMessage
 from langchain_openai import ChatOpenAI
+from langchain_core.runnables.history import RunnableWithMessageHistory
 
 os.environ["LANGCHAIN_TRACING_V2"] = "false"
 
@@ -9,10 +10,12 @@ model = ChatOpenAI(model="deepseek-chat",base_url="https://api.deepseek.com",api
 
 # model.invoke("hello").pretty_print()
 
-messages = [
-    HumanMessage(content="你好 我是小明"),
-    AIMessage("你好，小明，很高兴认识你"),
-    HumanMessage(content="你知道我是谁嘛"),
-]
+# messages = [
+#     HumanMessage(content="你好 我是小明"),
+#     AIMessage("你好，小明，很高兴认识你"),
+#     HumanMessage(content="你知道我是谁嘛"),
+# ]
+#
+# model.invoke(messages).pretty_print()
 
-model.invoke(messages).pretty_print()
+RunnableWithMessageHistory

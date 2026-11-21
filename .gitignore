@@ -1,0 +1,23 @@
+# 密钥与本地环境
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# 模型缓存与数据（体积大，不进仓库）
+afeng.*/
+model/
+models/
+cache/
+data/

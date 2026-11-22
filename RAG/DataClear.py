@@ -12,6 +12,8 @@ from pathlib import Path
 from typing import List
 
 from llama_index.core import Document
+
+import util
 from config import base_path
 
 
@@ -71,7 +73,7 @@ def clean_all_formats(input_dir: Path) -> List[Document]:
     :return: 清洗完成的document列表
     """
     # 将文件解析出来，得到一个Document对象的列表
-    dir = parse_all_formats(input_dir)
+    dir = util.parse_all_formats(input_dir)
 
     # 逐个清洗document对象
     cleaned_docs = [clean_doc(doc) for doc in dir]

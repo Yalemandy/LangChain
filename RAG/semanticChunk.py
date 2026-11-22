@@ -45,8 +45,8 @@ def text_embedding_similarity(sentence1: str, sentence2: str) -> float:
 def semantic_chunk_document(input_str: str) -> List[Document]:
     """
 
-    :param input_str:
-    :return:
+    :param input_str: 目标文件路径
+    :return: 切好的document列表
     """
 
     # 获取清洗之后的Document列表 空列表

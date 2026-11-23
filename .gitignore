@@ -29,3 +29,10 @@ data/
 # 放行 RAG 的小体积测试数据（模型缓存等大件仍不入库）
 !RAG/data/
 !RAG/data/**
+
+# 前端依赖与构建产物
+node_modules/
+dist/
+
+# 本地备份文件
+*.bak-*

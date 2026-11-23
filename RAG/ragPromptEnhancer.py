@@ -132,12 +132,12 @@ def build_prompt(question: str, context: str) -> str:
 # 根据原始文档和用户问题生成提示词
 def get_prompt(
         question: str,
-        tok_k: int=5,
+        top_k: int=5,
         max_distance: float=0.5,
         max_chars: int=500,
 ) -> str:
     # 检索出来的东西
-    hits = retrieve(question, tok_k)
+    hits = retrieve(question, top_k)
 
     # 上下文的过滤
     texts = filter_chunks(hits, max_distance)

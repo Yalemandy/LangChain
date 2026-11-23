@@ -11,3 +11,10 @@ document_path = base_path / "data"
 
 load_dotenv(base_path / ".env")
 dashscope_api_key = os.getenv("DASHSCOPE_API_KEY")
+
+
+# 医疗问答项目全量
+medical_all_data_path = base_path / "medical/data"
+
+# 医疗问答项目简化版
+medical_data_path = base_path / "medical/data/less"

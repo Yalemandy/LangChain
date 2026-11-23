@@ -1,11 +1,9 @@
 # 提示词增强
 import shutil
 import time
-from pathlib import Path
-from traceback import format_exc
 from typing import Dict, List
 
-from openpyxl.styles.builtins import total
+from llama_index.core import Document
 
 import config
 import milvus
@@ -165,6 +163,21 @@ def interactive(
 
         prompt = get_prompt(question)
         print(prompt)
+
+# 直接把分好块的进行入库
+def index_to_milvus_by_chunks(chunks: List[Document])->int:
+
+    # 定义待插入的数据集
+    rows = []
+
+    # 进行数据封装
+    for i, chunk in enumerate(chunks):
+        vec = milvus.embed_model.get_text_embedding(chunk.text)
+        rows.append({"id": i + 1, "vector": vec, "text": chunk.text})
+
+    milvus.inert(COLLECTION, rows)
+    print(f"已经完成入库：{len(rows)},向量的维度：{DIMENSION}")
+    return len(rows)
 
 if __name__ == "__main__":
     init()

@@ -15,7 +15,12 @@ def embedding_similarity(sentence1: str , sentence2: str) -> float:
     vec2 = embed_model.get_text_embedding(sentence2)
 
     # 计算相似度
-    similarity = embed_model.similarity(vec1, vec2)
+    similarity = embed_model.similarity(
+        vec1,
+        vec2,
+        mode=SimilarityMode.DOT_PRODUCT   # DOT_PRODUCT 欧式距离  DEFAULT 余弦相似度  EUCLIDEAN 点积距离
+    )
+
 
     return similarity
 

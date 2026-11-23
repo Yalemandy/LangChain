@@ -28,7 +28,7 @@ def sentence_chunk_document(input_str: str, max_sentences: int =5)->List[Documen
         path = doc.metadata["file_path"]
 
         sents = [
-            s.strip
+            s.strip()
             for s in re.split(r"(?<=[。！？！？\.])\s+", text)
             if s.strip()
         ]
@@ -40,20 +40,20 @@ def sentence_chunk_document(input_str: str, max_sentences: int =5)->List[Documen
             if not part:
                 continue
 
-        m = dict(doc.metadata)
-        m.update({
-            "source_file_path": path,
-            "chunk_start": i,
-            "chunk_index": i,
-            "chunk_end": min(i+max_sentences, len(sents)),
-        })
-        chunks.append(Document(text=part, metadata=m))
+            m = dict(doc.metadata)
+            m.update({
+                "source_file_path": path,
+                "chunk_start": i,
+                "chunk_index": i,
+                "chunk_end": min(i+max_sentences, len(sents)),
+            })
+            chunks.append(Document(text=part, metadata=m))
 
     # 预览效果
-    for i, chunk in enumerate(chunks):
-        print(f"第{i + 1}个分块")
-        print(chunk.metadata)
-        print(chunk.text)
+    # for i, chunk in enumerate(chunks):
+    #     print(f"第{i + 1}个分块")
+    #     print(chunk.metadata)
+    #     print(chunk.text)
 
     return chunks
 

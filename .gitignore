@@ -21,3 +21,7 @@ model/
 models/
 cache/
 data/
+
+# 本地向量库数据文件（Milvus Lite / SQLite）
+*.db
+*.db/
